@@ -17,7 +17,7 @@
                     <textarea class="form-control" name="description" id="description" rows="4"></textarea>
                 </div>    
                 <hr>
-                <input type="button" value="Submit Question" class="btn btn-primary">
+                <input type="submit" value="Submit Question" class="btn btn-primary">
             </form>
         </div>    
     </div>        

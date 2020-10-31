@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -34,7 +35,25 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate form data
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+
+        //process data
+        $question = new Question();
+        $question->title = $request->input('title');
+        $question->description = $request->input('description');
+
+        //verify if saved - *note that the $question->id is available after save()*
+        if($question->save()){
+            //temporary display next route
+            return route('questions.show', $question->id);
+        }
+        else {
+            //may add session flash error here
+            return route('questions.create');
+        }
     }
 
     /**
