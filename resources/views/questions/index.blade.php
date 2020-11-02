@@ -8,8 +8,8 @@
     @foreach ($questions as $question)
         <div class="card">
         <div class="card-body">
-            <h3>{{ $question->title }}</h3>
-            <p>{{ $question->description }}</p>
+            <h3 class="card-title">{{ $question->title }}</h3>
+            <p class="card-text">{{ $question->description }}</p>
             <a href="{{ route('questions.show', $question->id) }}" class="btn btn-primary btn-sm">View</a>
         </div>
         </div>
