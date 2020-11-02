@@ -48,11 +48,11 @@ class QuestionController extends Controller
         //verify if saved - *note that the $question->id is available after save()*
         if($question->save()){
             //temporary display next route
-            return route('questions.show', $question->id);
+            return redirect()->route('questions.show', $question->id);
         }
         else {
             //may add session flash error here
-            return route('questions.create');
+            return redirect()->route('questions.create');
         }
     }
 
@@ -64,7 +64,8 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        $question = Question::findOrFail($id);
+        return view('questions.show')->with('question', $question);
     }
 
     /**
