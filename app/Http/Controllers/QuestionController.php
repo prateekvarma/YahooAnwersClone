@@ -14,7 +14,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return "hello from Index";
+        $questions = Question::all();
+        return view('questions.index')->with('questions', $questions);
     }
 
     /**
