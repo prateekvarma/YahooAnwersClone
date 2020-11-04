@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::paginate(3);
+        $questions = Question::orderBy('id', 'desc')->paginate(3);
         return view('questions.index')->with('questions', $questions);
     }
 
