@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::all();
+        $questions = Question::paginate(3);
         return view('questions.index')->with('questions', $questions);
     }
 
