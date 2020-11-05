@@ -9,6 +9,7 @@
     <hr>
 
     <div class="col-md-8">
+        @if($question->answers->count() > 0)
         @foreach($question->answers as $answer)
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -18,6 +19,16 @@
                 </div>
             </div>
         @endforeach
+
+        @else
+        <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>
+                        <b>There are not answers yet :( </b>
+                    </p>
+                </div>
+            </div>
+        @endif    
     </div>
 
     <hr>
