@@ -6,6 +6,19 @@
     <h1>{{ $question->title }}</h1>
     <p class="lead">{{ $question->description }}</p>
 
+    <hr>
+
+    <div class="col-md-8">
+        @foreach($question->answers as $answer)
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>
+                        {{ $answer->content }}
+                    </p>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
     <hr>
 
