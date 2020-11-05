@@ -10,15 +10,15 @@
 
     <div class="col-md-8">
         @if($question->answers->count() > 0)
-        @foreach($question->answers as $answer)
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <p>
-                        {{ $answer->content }}
-                    </p>
+            @foreach($question->answers as $answer)
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p>
+                            {{ $answer->content }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
 
         @else
         <div class="panel panel-default">
