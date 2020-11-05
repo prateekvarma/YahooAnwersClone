@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AnswersController extends Controller
@@ -34,7 +36,20 @@ class AnswersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'content' => 'required|min:5',
+            'question_id' => 'required|integer'
+        ]);
+
+        $answer = new Answer();
+        $answer->content = $request->content;
+        
+        //get the related question
+        $question = Question::findOrFail($request->question_id);
+        //set the retrieved question, with relationship to answer
+        //take question -> set relationship -> save it into answer
+        $question->answers()->save($answer);
+        return redirect()->route('questions.show', $question->id);
     }
 
     /**
