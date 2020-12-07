@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -45,6 +46,9 @@ class QuestionController extends Controller
         $question = new Question();
         $question->title = $request->input('title');
         $question->description = $request->input('description');
+        //associate the user to a question
+        //user() below is the model relatioship. The Auth::id() can be replaced wih Auth::user()->id)
+        $question->user()->associate(Auth::id());
 
         //verify if saved - *note that the $question->id is available after save()*
         if($question->save()){

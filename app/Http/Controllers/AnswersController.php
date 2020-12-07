@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Answer;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Auth;
 
 class AnswersController extends Controller
 {
@@ -43,7 +44,7 @@ class AnswersController extends Controller
 
         $answer = new Answer();
         $answer->content = $request->content;
-        
+        $answer->user()->associate(Auth::id());
         //get the related question
         $question = Question::findOrFail($request->question_id);
         //set the retrieved question, with relationship to answer
