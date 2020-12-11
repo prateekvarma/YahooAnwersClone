@@ -5,10 +5,11 @@
 <div class="container">
     <h1>{{ $question->title }}</h1>
     <p class="lead">{{ $question->description }}</p>
-
+    <p>Submitted by : {{  $question->user->name  }} created : {{ $question->created_at->diffForHumans() }} </p>
     <hr>
 
     <div class="col-md-8">
+        <h4>Answers :</h4>
         @if($question->answers->count() > 0)
             @foreach($question->answers as $answer)
                 <div class="panel panel-default">
@@ -16,6 +17,7 @@
                         <p>
                             {{ $answer->content }}
                         </p>
+                        <p>Answered by: {{ $answer->user->name }}</p>
                     </div>
                 </div>
             @endforeach
