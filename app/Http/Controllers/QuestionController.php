@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\returnArgument;
 
 class QuestionController extends Controller
 {
@@ -81,7 +82,12 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Question::findOrFail($id);
+        if ($question->user->id != Auth::id())
+        {
+            return abort(403);
+        }
+        return view('questions.edit')->with('question', $question);
     }
 
     /**
@@ -93,7 +99,32 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // https://laravel.com/docs/8.x/eloquent#updates
+
+        //validate form data
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+
+        $question = Question::findOrFail($id);
+        if ($question->user->id != Auth::id())
+        {
+            return abort(403);
+        }
+
+        $question->title = $request->input('title');
+        $question->title = $request->input('description');
+
+        if($question->save())
+        {
+            // saved correctly
+            return redirect()->route('questions.show')->with($question->id);
+        }
+        else
+        {
+            // did not save
+            return redirect()->route('questions.index');
+        }
     }
 
     /**

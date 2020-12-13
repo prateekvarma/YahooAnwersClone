@@ -6,6 +6,8 @@
     <h1>{{ $question->title }}</h1>
     <p class="lead">{{ $question->description }}</p>
     <p>Submitted by : {{  $question->user->name  }} created : {{ $question->created_at->diffForHumans() }} </p>
+    <!-- Below is inserting a variable in a named route. See : https://laravel.com/docs/8.x/urls -->
+    <a href="{{ route('questions.edit', ['question' => $question->id]) }}" type="submit" class="btn btn-primary">Edit</a>
     <hr>
 
     <div class="col-md-8">
