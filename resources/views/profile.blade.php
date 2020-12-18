@@ -21,6 +21,16 @@
                 </div>
                 @endforeach
         </div>
+        <div class="col-md-6">
+            <h3>Answers</h3>
+            @foreach ($user->answers as $answer)
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>{{ $answer->content }}</h4>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 
 @endsection
