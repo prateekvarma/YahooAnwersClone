@@ -4,7 +4,7 @@
 
     <div class="container">
         <h1>{{ $user->name }}'s Profile</h1>
-    </div>
+
 
     <hr>
 
@@ -15,10 +15,13 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h4>{{ $question->title }}</h4>
-                        <hr>
                         <p>{{ $question->description }}</p>
                     </div>
+                    <div class="panel-footer">
+                        <a class="btn btn-primary btn-sm" href="{{ route('questions.show', $question->id) }}">View</a>
+                    </div>
                 </div>
+                <hr>
                 @endforeach
         </div>
         <div class="col-md-6">
@@ -31,6 +34,7 @@
                 </div>
             @endforeach
         </div>
+    </div>
     </div>
 
 @endsection
