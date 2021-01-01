@@ -29,7 +29,10 @@ class HomeController extends Controller
 
     public function profile($id)
     {
-        $user = User::findOrFail($id);
+        // $user = User::findOrFail($id);
+        // using eager loading instead, to avoid the n+1 problem
+        // The 'answers.question' is a special relationship, for pulling the questions related to answers
+        $user = User::with(['questions', 'answers', 'answers.question'])->find($id);
         return view('profile')->with('user', $user);
     }
 }

@@ -27,7 +27,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ route('questions.show', $answer->question->id) }}">{{ $answer->question->title }}</a>   
+                        <a href="{{ route('questions.show', $answer->question->id) }}">{{ $answer->question->title }}</a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $answer->content }}</h5>
