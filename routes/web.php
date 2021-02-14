@@ -16,3 +16,4 @@ Route::resource('answers', AnswersController::class);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/profile/{user}', [HomeController::class, 'profile'])->name('profile');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

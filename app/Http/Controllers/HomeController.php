@@ -35,4 +35,9 @@ class HomeController extends Controller
         $user = User::with(['questions', 'answers', 'answers.question'])->find($id);
         return view('profile')->with('user', $user);
     }
+
+    public function contact()
+    {
+        return 'This is the contact function';
+    }
 }
