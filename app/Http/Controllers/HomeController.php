@@ -38,6 +38,6 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return 'This is the contact function';
+        return view('contact');
     }
 }
